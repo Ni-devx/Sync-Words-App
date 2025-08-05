@@ -142,7 +142,7 @@ const PromiseSection = () => {
                             <span>1時間後</span>
                             <span>1日後</span>
                             <span>6日後</span>
-                            <span>1ヶ月後</span>
+                            <span>30日後</span>
                         </div>
                         
                         {/* 軸ラベル */}
