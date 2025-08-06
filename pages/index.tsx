@@ -257,10 +257,9 @@ const LandingPage: NextPage = () => {
     return (
         <>
             <Head>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="../public/favicon.ico" />
                 <title>Sync Words | あなたの記憶と同期する、次世代の単語帳</title>
                 <meta name="description" content="Sync Wordsは、科学的な学習理論に基づいたスマートな単語帳アプリです。出会った単語を、忘れられない知識へと変えましょう。" />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className="bg-[#0A192F] font-sans text-[#ccd6f6] antialiased selection:bg-[#64ffda]/20">
                 <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-[#0A192F]/50 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
