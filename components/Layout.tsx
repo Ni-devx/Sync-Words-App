@@ -3,6 +3,7 @@
 import React, { useState, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import Sidebar from './Sidebar';
+import { Analytics } from "@vercel/analytics/react";
 
 type ReviewState = 'idle' | 'loading' | 'reviewing' | 'results';
 
@@ -67,6 +68,7 @@ const Layout: React.FC<LayoutProps> = ({ children, reviewState }) => {
           {children}
         </main>
       </div>
+      <Analytics />
     </div>
   );
 };
