@@ -257,6 +257,7 @@ const LandingPage: NextPage = () => {
     return (
         <>
             <Head>
+                <link rel="icon" href="/favicon.ico" />
                 <title>Sync Words | あなたの記憶と同期する、次世代の単語帳</title>
                 <meta name="description" content="Sync Wordsは、科学的な学習理論に基づいたスマートな単語帳アプリです。出会った単語を、忘れられない知識へと変えましょう。" />
                 <link rel="icon" href="/favicon.ico" />
