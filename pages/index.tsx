@@ -295,16 +295,11 @@ const LandingPage: NextPage = () => {
                     </div>
                     <FinalCtaSection />
                 </main>
-                <footer className="bg-slate-900 border-t border-slate-800"><div className="container mx-auto px-6 py-8 text-center text-[#8892B0] text-sm"><p> {new Date().getFullYear()} Sync Words</p></div></footer>
+                <footer className="bg-slate-900 border-t border-slate-800">
+                    <Link href="/privacy-policy" legacyBehavior><a className="text-sm text-gray-500 hover:underline">プライバシーポリシー</a></Link>
+                    <div className="container mx-auto px-6 py-8 text-center text-[#8892B0] text-sm"><p> {new Date().getFullYear()} Sync Words</p></div>
+                </footer>
             </div>
-
-            <footer className="text-center p-4 mt-8">
-                <Link href="/privacy-policy" legacyBehavior>
-                    <a className="text-sm text-gray-500 hover:underline">
-                    プライバシーポリシー
-                    </a>
-                </Link>
-            </footer>
         </>
     );
 };

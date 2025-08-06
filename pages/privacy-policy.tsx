@@ -16,7 +16,7 @@ const PrivacyPolicyPage = () => {
           <div className="space-y-8 text-gray-700 prose lg:prose-lg">
             
             <p>
-              Sync Words（以下、「当サービス」といいます。）は、ユーザーの皆様からお預かりする情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
+              Sync Words（以下、「当サービス」）は、ユーザーの皆様からお預かりする情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」）を定めます。
             </p>
 
             <section>
@@ -42,7 +42,6 @@ const PrivacyPolicyPage = () => {
               <ol className="list-decimal list-inside space-y-2">
                 <li>ユーザー認証及びサービスの提供・運営のため</li>
                 <li>ユーザーご自身の登録情報（単語データ等）の閲覧・編集機能を可能にするため</li>
-                <li>上記の利用目的に付随する目的</li>
               </ol>
             </section>
 
@@ -63,7 +62,7 @@ const PrivacyPolicyPage = () => {
             <section>
               <h2 className="text-xl font-semibold text-gray-800">第5条（登録情報の開示・削除）</h2>
               <p>
-                ユーザーは、当サービスにログインすることにより、ご自身で登録した単語データ等をいつでも閲覧・編集することが可能です。
+                ユーザーは、当サービスにログインすることにより、ご自身で登録した単語データをいつでも閲覧・編集することが可能です。
               </p>
             </section>
             
@@ -72,17 +71,6 @@ const PrivacyPolicyPage = () => {
               <h2 className="text-xl font-semibold text-gray-800">第7条（プライバシーポリシーの変更）</h2>
               <p>
                 本ポリシーの内容は、ユーザーに通知することなく、変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-semibold text-gray-800">第8条（事業者の表示）</h2>
-              <p>
-                事業者の名称：[事業者の氏名または名称]
-                <br />
-                住所：[住所を記載]
-                <br />
-                代表者：[代表者の氏名を記載]
               </p>
             </section>
             
