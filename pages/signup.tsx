@@ -37,7 +37,7 @@ export default function SignupPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 p-4">
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-xl">
         <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-slate-800">Sync Words</h1>
             <p className="text-slate-500 mt-2">新しい英単語学習を、ここから始めよう。</p>
@@ -68,7 +68,7 @@ export default function SignupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder='アルファベットの大文字・小文字・数字から構成され、8文字以上'
+                placeholder='アルファベットの大文字・小文字・数字で構成され8文字以上'
               />
             </div>
             
