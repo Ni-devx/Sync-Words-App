@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
         <title>Sync Words</title>
         <meta name="description" content="Sync Wordsは、科学的な学習理論に基づいたスマートな単語帳アプリです。出会った単語を、忘れられない知識へと変えましょう。" />
 

@@ -7,9 +7,8 @@ function Document() {
     <Html lang="ja"> {/* lang属性などもここで設定できます */}
       <Head>
         {/* ここにfaviconのリンクを記述します */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicons/icon.svg" type="image/svg+xml" />
       </Head>
       <body>
         <Main />
