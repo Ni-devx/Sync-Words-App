@@ -76,6 +76,15 @@ return (
               </div>
             )}
 
+            {/* ▼▼▼ 追加箇所 ▼▼▼ */}
+            {/* サインアップフォームとの高さ調整用のスペーサー */}
+            <div className="invisible" aria-hidden="true">
+              <p className="text-center text-xs text-slate-500">
+                アカウント登録により、プライバシーポリシーと利用規約を同意したこととみなします。
+              </p>
+            </div>
+            {/* ▲▲▲ 追加箇所 ▲▲▲ */}
+
             <button
               type="submit"
               disabled={loading}

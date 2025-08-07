@@ -78,6 +78,22 @@ export default function SignupPage() {
               </div>
             )}
 
+            {/* ▼▼▼ 追加箇所 ▼▼▼ */}
+            <div className="text-center text-xs text-slate-500">
+              <p>
+                アカウント登録により、
+                <Link href="/privacy-policy" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                  プライバシーポリシー
+                </Link>
+                と
+                <Link href="/terms-of-service" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                  利用規約
+                </Link>
+                を同意したこととみなします。
+              </p>
+            </div>
+            {/* ▲▲▲ 追加箇所 ▲▲▲ */}
+
             <button
               type="submit"
               disabled={loading}
