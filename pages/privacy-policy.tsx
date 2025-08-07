@@ -102,7 +102,7 @@ const PrivacyPolicyPage: NextPage = () => {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold text-white mb-4">第7条（プライバシーポリシーの変更）</h2>
+                  <h2 className="text-2xl font-bold text-white mb-4">第6条（プライバシーポリシーの変更）</h2>
                   <p>
                     本ポリシーの内容は、ユーザーに通知することなく、変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。
                   </p>
