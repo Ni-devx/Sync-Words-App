@@ -258,7 +258,7 @@ const LandingPage: NextPage = () => {
         <>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
-                <title>Sync Words | あなたの記憶と同期する、次世代の単語帳</title>
+                <title>Sync Words | あなたの脳とシンクロするインテリジェントな単語帳。</title>
                 <meta name="description" content="Sync Wordsは、科学的な学習理論に基づいたスマートな単語帳アプリです。出会った単語を、忘れられない知識へと変えましょう。" />
             </Head>
             <div className="bg-[#0A192F] font-sans text-[#ccd6f6] antialiased selection:bg-[#64ffda]/20">
