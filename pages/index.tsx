@@ -51,7 +51,7 @@ const StaggeredText = ({ text }: { text: string }) => {
 
     useEffect(() => {
         if (isMounted && isInView) {
-            const timer = setTimeout(() => setStartAnimation(true), 300);
+            const timer = setTimeout(() => setStartAnimation(true), 100);
             return () => clearTimeout(timer);
         }
     }, [isMounted, isInView]);
@@ -183,10 +183,10 @@ const PromiseSection = () => {
                         
                         {/* 説明テキスト */}
                         <div className={`absolute transition-all duration-700 ease-out ${shouldAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{left: '62%', top: '50%', transitionDelay: '1800ms'}}>
-                            <p className="text-sm text-red-400/80">何もしないと、こうなる。</p>
+                            <p className="text-sm text-red-400/80">何もしない場合</p>
                         </div>
                         <div className={`absolute transition-all duration-700 ease-out ${shouldAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{left: '62%', top: '18%', transitionDelay: '2500ms'}}>
-                            <p className="whitespace-pre-line text-sm text-[#64ffda]">{`Sync Wordsが、\n知識を定着させる。`}</p>
+                            <p className="whitespace-pre-line text-sm text-[#64ffda]">{`復習した場合`}</p>
                         </div>
                     </div>
                 </div>
@@ -294,12 +294,25 @@ const LandingPage: NextPage = () => {
                     </div>
                     <FinalCtaSection />
                 </main>
+
                 <footer className="bg-slate-900 border-t border-slate-800">
-                    <div className="container mx-auto px-6 py-8 text-center text-[#8892B0] text-sm">
-                        <div className="mb-4">
-                            <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors duration-300">プライバシーポリシー</a></Link>
+                    <div className="container mx-auto px-6 py-8">
+                    <div className="grid grid-cols-2 items-start pt-4 pb-4">
+                        
+                        <div className="flex flex-col space-y-4">
+                        <div className="flex items-center space-x-3"><Image src="/images/icon.jpg" alt="アイコン" width={48} height={48} /><span className="text-2xl font-semibold text-white">Sync Words</span></div>
+                        <div className="text-sm text-[#8892B0]">Sync Words, {new Date().getFullYear()}</div>
                         </div>
-                        <p> {new Date().getFullYear()} Sync Words</p>
+
+                        {/* items-end を items-start に変更 */}
+                        <div className="flex flex-col items-start space-y-3 text-sm text-[#8892B0]">
+                        <span className="font-semibold text-white text-xl">リソース</span>
+                        <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</a></Link>
+                        <Link href="/terms-of-service" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">利用規約</a></Link>
+                        <Link href="/update-history" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">アップデート</a></Link>
+                        </div>
+
+                    </div>
                     </div>
                 </footer>
             </div>

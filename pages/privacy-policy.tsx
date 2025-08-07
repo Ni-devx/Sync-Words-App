@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // --- クライアントサイドでのマウント状態を安全に管理するカスタムフック ---
 const useIsMounted = () => {
@@ -60,7 +61,7 @@ const PrivacyPolicyPage: NextPage = () => {
                     当サービスは、個人情報保護法に定められる「個人情報」（氏名、生年月日、住所、電話番号、メールアドレスなど、特定の個人を識別できる情報）を収集いたしません。
                   </p>
                   <p className="mt-4">
-                    サービスのご利用にあたり、ユーザーから以下の情報（以下、総称して「ユーザー情報」といいます。）をご提供いただきます。
+                    サービスのご利用にあたり、ユーザーから以下の情報（以下、総称して「ユーザー情報」といいます。）をご提供いただきます。個人を直接特定するものではありませんが、慎重に取り扱います。
                   </p>
                   <ul className="list-disc list-inside space-y-2 mt-4 pl-4">
                     <li>ユーザーID（ユーザー自身で設定）</li>
@@ -90,8 +91,13 @@ const PrivacyPolicyPage: NextPage = () => {
                 <section>
                   <h2 className="text-2xl font-bold text-white mb-4">第4条（安全管理措置）</h2>
                   <p>
-                    当サービスは、お預かりしたユーザー情報の漏えい、滅失またはき損の防止、その他のユーザー情報の安全管理のために必要かつ適切な措置を講じます。特に、パスワードは復元不可能な形式に暗号化した上で保存します。また、Supabaseのデータベースに保存されるユーザー情報は、適切なアクセス制御を行い、外部からの不正アクセスを防止します。
+                    当サービスは、ユーザー情報の漏えい、滅失、毀損、及び不正アクセス等を防止するため、以下の安全管理措置を講じています。
                   </p>
+                  <ul className="list-disc list-inside space-y-2 mt-4 pl-4">
+                    <li>パスワードは復元不可能な形式で暗号化して保存します。</li>
+                    <li>データベースにはRLSを導入し、ユーザー本人のみが自身のデータにアクセスできるよう制限しています。</li>
+                  </ul>
+
                 </section>
 
                 <section>
@@ -104,7 +110,7 @@ const PrivacyPolicyPage: NextPage = () => {
                 <section>
                   <h2 className="text-2xl font-bold text-white mb-4">第6条（プライバシーポリシーの変更）</h2>
                   <p>
-                    本ポリシーの内容は、ユーザーに通知することなく、変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。
+                    本ポリシーの内容は、必要に応じて変更されることがあります。重要な変更がある場合には、ウェブサイト上での告知など適切な方法でユーザーにお知らせいたしますが、ユーザーに通知することなく、変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。
                   </p>
                 </section>
                 
@@ -116,14 +122,26 @@ const PrivacyPolicyPage: NextPage = () => {
           </div>
         </main>
 
-        <footer className="bg-slate-900 border-t border-slate-800">
-            <div className="container mx-auto px-6 py-8 text-center text-[#8892B0] text-sm">
-                <div className="mb-4">
-                    <Link href="/" legacyBehavior><a className="hover:text-[#64ffda] transition-colors duration-300">トップページ</a></Link>
-                </div>
-                <p>&copy; {new Date().getFullYear()} Sync Words</p>
-            </div>
-        </footer>
+                <footer className="bg-slate-900 border-t border-slate-800">
+                    <div className="container mx-auto px-6 py-8">
+                    <div className="grid grid-cols-2 items-start pt-4 pb-4">
+                        
+                        <div className="flex flex-col space-y-4">
+                        <div className="flex items-center space-x-3"><Image src="/images/icon.jpg" alt="アイコン" width={48} height={48} /><span className="text-2xl font-semibold text-white">Sync Words</span></div>
+                        <div className="text-sm text-[#8892B0]">Sync Words, {new Date().getFullYear()}</div>
+                        </div>
+
+                        {/* items-end を items-start に変更 */}
+                        <div className="flex flex-col items-start space-y-3 text-sm text-[#8892B0]">
+                        <span className="font-semibold text-white text-xl">リソース</span>
+                        <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</a></Link>
+                        <Link href="/terms-of-service" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">利用規約</a></Link>
+                        <Link href="/update-history" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">アップデート</a></Link>
+                        </div>
+
+                    </div>
+                    </div>
+                </footer>
       </div>
     </>
   );
