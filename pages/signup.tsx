@@ -55,7 +55,7 @@ export default function SignupPage() {
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
                 required
-                placeholder='4文字以上の英数字とアンダーバー'
+                placeholder='英数字とアンダーバーのみで構成され４文字以上'
               />
             </div>
 
@@ -68,7 +68,7 @@ export default function SignupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder='8文字以上の英数字と記号'
+                placeholder='アルファベットの大文字・小文字・数字から構成され、8文字以上'
               />
             </div>
             
