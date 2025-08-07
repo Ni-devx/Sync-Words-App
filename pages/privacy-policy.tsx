@@ -44,7 +44,7 @@ const PrivacyPolicyPage: NextPage = () => {
 
         <main className="pt-24">
           <div className="container mx-auto px-6 py-16">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-full mx-auto">
               <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-10">
                 プライバシーポリシー
               </h1>
