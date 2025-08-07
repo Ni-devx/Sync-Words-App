@@ -290,7 +290,7 @@ const LandingPage: NextPage = () => {
                     <div className="space-y-16 md:space-y-32">
                         <FeatureSection index={0} title="脳と同期する。" description={`単語を思い出す反応速度から記憶の定着度を判定。\nそれに基づく最適化された復習計画により知識を長期記憶へ。`} imageSrc="/feature1.png" imageAlt="AIによる最適な復習タイミングの提示画面" />
                         <FeatureSection index={1} title="没入できる体験。" description={`洗練されたデザインが、学習コンテンツへの集中を加速。\n学習が効率化される没入感のある体験を。`} imageSrc="/feature2.png" imageAlt="没入できる学習モードのUI" />
-                        <FeatureSection index={2} title="出会いを逃さない。" description={`Chrome拡張機能が、ブラウザ上のあらゆる単語との出会いを逃さない。\nワンクリックで、無限の語彙を。`} linkText="こちらからインストール" linkUrl="https://chrome.google.com/webstore" imageSrc="/feature3.png" imageAlt="ウェブページからワンクリックで単語を登録するChrome拡張機能" />
+                        <FeatureSection index={2} title="出会いを逃さない。" description={`Chrome拡張機能が、ブラウザ上のあらゆる単語との出会いを逃さない。\nワンクリックで、無限の語彙を。`} linkText="こちらからインストール" linkUrl="https://chromewebstore.google.com/detail/sync-words/hbjdbljjbemllpdoemiokimoojlpckkf?hl=ja" imageSrc="/feature3.png" imageAlt="ウェブページからワンクリックで単語を登録するChrome拡張機能" />
                     </div>
                     <FinalCtaSection />
                 </main>
