@@ -37,7 +37,7 @@ export default function SignupPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 p-4">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-4xl">
         <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-slate-800">Sync Words</h1>
             <p className="text-slate-500 mt-2">新しい英単語学習を、ここから始めよう。</p>
