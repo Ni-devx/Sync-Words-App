@@ -1,23 +1,12 @@
-// pages/update-history.tsx などのファイル名で保存してください
-
+// pages/update-history.tsx
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
-
-// --- クライアントサイドでのマウント状態を安全に管理するカスタムフック ---
-const useIsMounted = () => {
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-    return isMounted;
-};
+import { updates } from '@/lib/updateHistoryData'; // ★★★ 追加
 
 const UpdateHistoryPage: NextPage = () => {
-  const isMounted = useIsMounted();
-
   return (
     <>
       <Head>
@@ -27,7 +16,7 @@ const UpdateHistoryPage: NextPage = () => {
       </Head>
 
       <div className="bg-[#0A192F] font-sans text-[#ccd6f6] antialiased selection:bg-[#64ffda]/20 min-h-screen">
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-[#0A192F]/50 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
+        <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-[#0A192F]/50 opacity-100 translate-y-0">
           <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-white hover:text-[#64ffda] transition-colors duration-300">
               Sync Words
@@ -51,80 +40,52 @@ const UpdateHistoryPage: NextPage = () => {
               </h1>
               
               <div className="space-y-12 text-[#8892B0] leading-loose">
-
-                {/* ===== 新しい更新履歴は、この下にコピーして追加してください ===== */}
-                
-{/*
-
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-2">バージョン 1.2.0</h2>
-                  <p className="text-sm text-[#8892B0] mb-4">2025年8月5日</p>
-                  <div className="space-y-4">
-                      <div>
-                          <h3 className="text-xl font-semibold text-[#ccd6f6] mb-3">【新機能】</h3>
-                          <ul className="list-disc list-inside space-y-2 pl-4">
-                            <li>ダークモードに対応しました。設定画面から切り替えられます。</li>
-                            <li>学習リマインダー機能を追加しました。毎日指定した時間に通知します。</li>
-                          </ul>
+                {/* ★★★ 修正: データから動的に更新履歴を生成 ★★★ */}
+                {updates.map((update, index) => (
+                  <React.Fragment key={update.version}>
+                    <section>
+                      <h2 className="text-2xl font-bold text-white mb-2">バージョン {update.version}</h2>
+                      <p className="text-sm text-[#8892B0] mb-4">{update.date}</p>
+                      <div className="space-y-4">
+                        {update.changes.map((change, idx) => (
+                          <div key={idx} className={idx > 0 ? 'pt-2' : ''}>
+                            <h3 className="text-xl font-semibold text-[#ccd6f6] mb-3">【{change.title}】</h3>
+                            <ul className="list-disc list-inside space-y-2 pl-4">
+                              {change.details.map((detail, i) => (
+                                <li key={i}>{detail}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
-                      <div className="pt-2">
-                          <h3 className="text-xl font-semibold text-[#ccd6f6] mb-3">【改善】</h3>
-                          <ul className="list-disc list-inside space-y-2 pl-4">
-                            <li>単語登録画面のUIを改善し、より直感的に操作できるようになりました。</li>
-                            <li>アプリ全体のパフォーマンスを向上させ、動作を高速化しました。</li>
-                          </ul>
-                      </div>
-                  </div>
-                </section>
+                    </section>
 
-                <div className="border-t border-slate-800"></div>
-
-*/}
-                
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-2">バージョン 1.1.0</h2>
-                  <p className="text-sm text-[#8892B0] mb-4">2025年8月7日</p>
-                  <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li>アカウント登録時のユーザIDとパスワードの設定要件を明確に記載しました。</li>
-                    <li>利用規約、プライバシーポリシーを変更しました。</li>
-                    <li>その他軽微なUIの改善を行いました。</li>
-                  </ul>
-                </section>
-
-                <div className="border-t border-slate-800"></div>
-                
-                <section>
-                  <h2 className="text-2xl font-bold text-white mb-2">バージョン 1.0.0</h2>
-                  <p className="text-sm text-[#8892B0] mb-4">2025年8月6日</p>
-                  <ul className="list-disc list-inside space-y-2 pl-4">
-                    <li>Sync Words のサービス提供を開始しました。</li>
-                  </ul>
-                </section>
-
+                    {/* 最後の要素以外には区切り線を表示 */}
+                    {index < updates.length - 1 && <div className="border-t border-slate-800"></div>}
+                  </React.Fragment>
+                ))}
               </div>
             </div>
           </div>
         </main>
-                <footer className="bg-slate-900 border-t border-slate-800">
-                    <div className="container mx-auto px-6 py-8">
-                    <div className="grid grid-cols-2 items-start pt-4 pb-4">
-                        
-                        <div className="flex flex-col space-y-4">
-                        <div className="flex items-center space-x-3"><Image src="/images/icon.jpg" alt="アイコン" width={48} height={48} /><span className="text-2xl font-semibold text-white">Sync Words</span></div>
-                        <div className="text-sm text-[#8892B0]">Sync Words, {new Date().getFullYear()}</div>
-                        </div>
-
-                        {/* items-end を items-start に変更 */}
-                        <div className="flex flex-col items-start space-y-3 text-sm text-[#8892B0]">
-                        <span className="font-semibold text-white text-xl">リソース</span>
-                        <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</a></Link>
-                        <Link href="/terms-of-service" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">利用規約</a></Link>
-                        <Link href="/update-history" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">アップデート</a></Link>
-                        </div>
-
-                    </div>
-                    </div>
-                </footer>
+        
+        {/* ... (フッター部分は変更なし) ... */}
+        <footer className="bg-slate-900 border-t border-slate-800">
+          <div className="container mx-auto px-6 py-8">
+            <div className="grid grid-cols-2 items-start pt-4 pb-4">
+              <div className="flex flex-col space-y-4">
+                <div className="flex items-center space-x-3"><Image src="/images/icon.jpg" alt="アイコン" width={48} height={48} /><span className="text-2xl font-semibold text-white">Sync Words</span></div>
+                <div className="text-sm text-[#8892B0]">Sync Words, {new Date().getFullYear()}</div>
+              </div>
+              <div className="flex flex-col items-start space-y-3 text-sm text-[#8892B0]">
+                <span className="font-semibold text-white text-xl">リソース</span>
+                <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</a></Link>
+                <Link href="/terms-of-service" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">利用規約</a></Link>
+                <Link href="/update-history" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">アップデート</a></Link>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
