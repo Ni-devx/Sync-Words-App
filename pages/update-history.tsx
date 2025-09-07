@@ -82,7 +82,7 @@ const UpdateHistoryPage: NextPage = () => {
 */}
                 
                 <section>
-                  <h2 className="text-2xl font-bold text-white mb-2">バージョン 1.0.1</h2>
+                  <h2 className="text-2xl font-bold text-white mb-2">バージョン 1.1.0</h2>
                   <p className="text-sm text-[#8892B0] mb-4">2025年8月7日</p>
                   <ul className="list-disc list-inside space-y-2 pl-4">
                     <li>アカウント登録時のユーザIDとパスワードの設定要件を明確に記載しました。</li>
