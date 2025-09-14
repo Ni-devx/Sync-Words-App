@@ -198,9 +198,9 @@ const TestimonialCard: React.FC<{ quote: string; name: string; title: string; de
 const TestimonialsSection = () => {
     const [ref, isInView] = useInView<HTMLElement>({ threshold: 0.1 });
     const testimonials = [
-        { quote: "Sync Wordsを使い始めてから、単語を覚えるのが苦じゃなくなりました。復習のタイミングを考えなくていいのが最高です。", name: "A. Tanaka", title: "大学生" },
-        { quote: "Chrome拡張が便利すぎます。気になった単語をその場で登録できるので、語彙が自然に増えていくのを実感しています。", name: "K. Suzuki", title: "ソフトウェアエンジニア" },
-        { quote: "UIが綺麗で、毎日アプリを開くのが楽しみになりました。学習が継続できるデザインって大事ですね。", name: "M. Sato", title: "デザイナー" },
+        { quote: "webブラウザ上であれば、単語を打ち込まなくとも、選択するだけで登録できる機能が使いやすく、ストレスが少なかった。", name: "", title: "高校生" },
+        { quote: "自分で復習する単語を決めるのは大変だから、自動で出してくれるのはとても嬉しい。日々の学習意欲につながった！", name: "", title: "高校生" },
+        { quote: "アプリのデザインがシンプルだったことが学習に適していて使い続けたくなりました。", name: "", title: "中学生" },
     ];
     return (
         <section ref={ref} className="py-24">
