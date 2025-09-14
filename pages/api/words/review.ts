@@ -46,7 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // ★★★ 変更点: timezoneOffsetも受け取る ★★★
   const auth = await authenticateRequest(req);
-  if (!auth.success || !auth.userId || !auth.timezoneOffset) {
+  if (!auth.success || !auth.userId) {
     return res.status(401).json({ message: auth.message });
   }
 
@@ -56,8 +56,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
+    // ユーザーのタイムゾーンオフセットを検証し、無効な場合はUTCをデフォルトとして使用
+    const offsetRegex = /^[+-]\d{2}:\d{2}$/;
+    const timezoneOffset = auth.timezoneOffset && offsetRegex.test(auth.timezoneOffset)
+      ? auth.timezoneOffset
+      : '+00:00';
+
     // ★★★ 変更点: ハードコードされた '+09:00' をユーザーのタイムゾーンに置き換え ★★★
-    const exclusiveUpperBound = new Date(`${date}T00:00:00${auth.timezoneOffset}`);
+    const exclusiveUpperBound = new Date(`${date}T00:00:00${timezoneOffset}`);
     exclusiveUpperBound.setDate(exclusiveUpperBound.getDate() + 1);
 
     const { data, error } = await supabase
