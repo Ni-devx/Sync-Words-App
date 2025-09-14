@@ -61,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { data: newUser, error } = await supabase
     .from('users')
-    .insert({ user_id, password_hash: hashedPassword, display_name: user_id, timezone_offset: '0' })
+    .insert({ user_id, password_hash: hashedPassword, display_name: user_id, timezone_offset: '0', notification_time: 9 })
     .select('*')
     .single()
 
