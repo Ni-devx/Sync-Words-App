@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   const navItems = [
     { name: '今日の復習', href: '/app', icon: HomeIcon },
     { name: '単語一覧', href: '/app/words', icon: ListIcon },
-    { name: '設定', href: '/setting', icon: SettingsIcon },
+    { name: '設定', href: '/app/setting', icon: SettingsIcon },
   ];
 
   const handleLogout = async () => {

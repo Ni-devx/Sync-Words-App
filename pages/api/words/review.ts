@@ -1,4 +1,4 @@
-// pages/api/words/review.ts
+// pages/api/words/review.ts (フルコード)
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
 import jwt from 'jsonwebtoken';
@@ -8,16 +8,34 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// 安全な認証関数 (count.tsと共通)
+// (ここに上記の新しい authenticateRequest 関数を貼り付け)
+// 安全な認証関数 (count.tsとreview.tsで共通)
 async function authenticateRequest(req: NextApiRequest) {
   const token = req.cookies.auth_token;
-  if (!token) return { success: false, message: '認証トークンが必要です' };
+  if (!token) {
+    return { success: false, message: '認証トークンが必要です。' };
+  }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
-    if (!decoded.userIdString) throw new Error();
-    return { success: true, userId: decoded.userIdString };
+    // トークンからユーザーのUUID (sub) を取得
+    if (!decoded.sub) {
+      return { success: false, message: 'トークンにユーザー情報が含まれていません。' };
+    }
+
+    // データベースからユーザーIDとタイムゾーンオフセットを取得
+    const { data: user, error } = await supabase
+      .from('users')
+      .select('user_id, timezone_offset')
+      .eq('id', decoded.sub) // UUIDで検索
+      .single();
+
+    if (error || !user) {
+      return { success: false, message: 'ユーザーが見つかりません。' };
+    }
+
+    return { success: true, userId: user.user_id, timezoneOffset: user.timezone_offset };
   } catch (error) {
-    return { success: false, message: '認証トークンが無効です' };
+    return { success: false, message: '認証トークンが無効、または期限切れです。' };
   }
 }
 
@@ -26,8 +44,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
+  // ★★★ 変更点: timezoneOffsetも受け取る ★★★
   const auth = await authenticateRequest(req);
-  if (!auth.success || !auth.userId) {
+  if (!auth.success || !auth.userId || !auth.timezoneOffset) {
     return res.status(401).json({ message: auth.message });
   }
 
@@ -37,16 +56,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    // ★★★ 改善点 (count.tsと全く同じロジック) ★★★
-    const exclusiveUpperBoundJST = new Date(`${date}T00:00:00+09:00`);
-    exclusiveUpperBoundJST.setDate(exclusiveUpperBoundJST.getDate() + 1);
+    // ★★★ 変更点: ハードコードされた '+09:00' をユーザーのタイムゾーンに置き換え ★★★
+    const exclusiveUpperBound = new Date(`${date}T00:00:00${auth.timezoneOffset}`);
+    exclusiveUpperBound.setDate(exclusiveUpperBound.getDate() + 1);
 
     const { data, error } = await supabase
       .from('words')
       .select('*')
       .eq('user_id', auth.userId)
-      // gte条件を削除し、「今日の終わり」以前のすべての単語を取得
-      .lt('next_review_date', exclusiveUpperBoundJST.toISOString());
+      .lt('next_review_date', exclusiveUpperBound.toISOString());
 
     if (error) {
       console.error('Supabase fetch review words error:', error);

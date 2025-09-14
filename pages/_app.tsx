@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // ★★★ 改善点 1: HomePageの状態を_app.tsxで管理 ★★★
   const [reviewState, setReviewState] = useState<ReviewState>('idle');
 
-  const noLayoutPaths = ['/login', '/signup', '/', '/privacy-policy', "/update-history", "/terms-of-service"];
+  const noLayoutPaths = ['/login', '/signup', '/', '/privacy-policy', "/update-history", "/terms-of-service", "/guide"];
   const shouldApplyLayout = !noLayoutPaths.includes(router.pathname);
 
   // HomePageの場合のみ、stateをLayoutとComponentに渡す

@@ -310,6 +310,7 @@ const LandingPage: NextPage = () => {
                         <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</a></Link>
                         <Link href="/terms-of-service" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">利用規約</a></Link>
                         <Link href="/update-history" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">アップデート</a></Link>
+                        <Link href="/guide" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">使い方ガイド</a></Link>
                         </div>
 
                     </div>
