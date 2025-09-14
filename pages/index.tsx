@@ -14,7 +14,9 @@ const useIsMounted = () => {
     return isMounted;
 };
 
-const useInView = <T extends HTMLElement>(options?: IntersectionObserverInit): [React.RefObject<T>, boolean] => {
+const useInView = <T extends HTMLElement>(
+    options?: IntersectionObserverInit
+): [React.Ref<T>, boolean] => {
     const ref = useRef<T>(null);
     const [isInView, setIsInView] = useState(false);
     useEffect(() => {
