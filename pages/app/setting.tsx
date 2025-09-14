@@ -189,41 +189,6 @@ const SettingPage = ({ user }: SettingPageProps) => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200">
-            <div className="p-6">
-              <h2 className="text-xl font-semibold text-slate-800">メールアドレス設定</h2>
-            </div>
-            <div className="px-6 pb-6 border-t border-slate-200">
-              <div className='mt-4 space-y-6'> {/* ★★★ 修正: space-y-2 から space-y-6 に変更 ★★★ */}
-                <form onSubmit={handleEmailUpdate}>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-600">メールアドレス</label>
-                  <p className="text-xs text-slate-500 mt-1 mb-2">学習リマインダーを受け取るメールアドレスを登録できます。（登録は任意です）</p>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                    <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="email@example.com" />
-                    <button type="submit" disabled={isUpdatingEmail} className="flex justify-center items-center bg-blue-600 text-white font-semibold px-6 py-2 rounded-md hover:bg-blue-700 transition-colors disabled:bg-slate-400 shrink-0 w-full sm:w-auto">
-                      {isUpdatingEmail ? <LoadingSpinner /> : '保存'}
-                    </button>
-                  </div>
-                </form>
-                <form onSubmit={handleNotificationTimeUpdate}>
-                  <label htmlFor="notification-time-select" className="block text-sm font-medium text-slate-600">リマインダー通知時間</label>
-                  <p className="text-xs text-slate-500 mt-1 mb-2">毎日この時間に復習リマインダーをメールで通知します。</p>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                    <select id="notification-time-select" value={notificationTime} onChange={e => setNotificationTime(parseInt(e.target.value, 10))} className="w-full p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-                      {Array.from({ length: 24 }, (_, i) => (
-                        <option key={i} value={i}>{`${i.toString().padStart(2, '0')}:00`}</option>
-                      ))}
-                    </select>
-                    <button type="submit" disabled={isUpdatingNotificationTime} className="flex justify-center items-center bg-blue-600 text-white font-semibold px-6 py-2 rounded-md hover:bg-blue-700 transition-colors disabled:bg-slate-400 shrink-0 w-full sm:w-auto">
-                      {isUpdatingNotificationTime ? <LoadingSpinner /> : '保存'}
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-
           {/* --- 2. タイムゾーン変更 --- */}
           <div className="bg-white rounded-xl shadow-sm border border-slate-200">
             <div className="p-6">

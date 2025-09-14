@@ -27,21 +27,15 @@ const TermsOfServicePage: NextPage = () => {
       </Head>
 
       <div className="bg-[#0A192F] font-sans text-[#ccd6f6] antialiased selection:bg-[#64ffda]/20 min-h-screen">
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-[#0A192F]/50 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
-          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-white hover:text-[#64ffda] transition-colors duration-300">
-              Sync Words
-            </Link>
-            <nav className="flex items-center gap-5">
-              <Link href="/login" className="text-sm font-medium text-[#ccd6f6] hover:text-[#64ffda] transition-colors duration-300">
-                ログイン
-              </Link>
-              <Link href="/signup" className="text-sm font-medium bg-[#64ffda] text-[#0A192F] px-4 py-2 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
-                無料で始める
-              </Link>
-            </nav>
-          </div>
-        </header>
+                <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md bg-[#0A192F]/80 ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="container mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+                        <Link href="/" className="text-2xl font-bold text-white hover:text-[#64ffda] transition-colors duration-300">Sync Words</Link>
+                        <nav className="flex items-center gap-5">
+                            <Link href="/login" className="text-sm font-medium text-[#ccd6f6] hover:text-[#64ffda] transition-colors duration-300">ログイン</Link>
+                            <Link href="/signup" className="text-sm font-medium bg-[#64ffda] text-[#0A192F] px-4 py-2 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">無料で始める</Link>
+                        </nav>
+                    </div>
+                </header>
 
         <main className="pt-24">
           <div className="container mx-auto px-6 py-16">
@@ -144,25 +138,20 @@ const TermsOfServicePage: NextPage = () => {
           </div>
         </main>
 
-                <footer className="bg-slate-900 border-t border-slate-800">
+                <footer className="bg-slate-900/70 border-t border-slate-800">
                     <div className="container mx-auto px-6 py-8">
-                    <div className="grid grid-cols-2 items-start pt-4 pb-4">
-                        
-                        <div className="flex flex-col space-y-4">
-                        <div className="flex items-center space-x-3"><Image src="/images/icon.jpg" alt="アイコン" width={48} height={48} /><span className="text-2xl font-semibold text-white">Sync Words</span></div>
-                        <div className="text-sm text-[#8892B0]">Sync Words, {new Date().getFullYear()}</div>
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                            <div className="text-center md:text-left">
+                                <Link href="/" className="text-2xl font-semibold text-white">Sync Words</Link>
+                                <p className="text-sm text-[#8892B0] mt-2">© {new Date().getFullYear()} Sync Words. All rights reserved.</p>
+                            </div>
+                            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#8892B0]">
+                                <Link href="/privacy-policy" className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</Link>
+                                <Link href="/terms-of-service" className="hover:text-[#64ffda] transition-colors">利用規約</Link>
+                                <Link href="/update-history" className="hover:text-[#64ffda] transition-colors">アップデート</Link>
+                                <Link href="/guide" className="hover:text-[#64ffda] transition-colors">使い方ガイド</Link>
+                            </div>
                         </div>
-
-                        {/* items-end を items-start に変更 */}
-                        <div className="flex flex-col items-start space-y-3 text-sm text-[#8892B0]">
-                        <span className="font-semibold text-white text-xl">リソース</span>
-                        <Link href="/privacy-policy" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">プライバシーポリシー</a></Link>
-                        <Link href="/terms-of-service" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">利用規約</a></Link>
-                        <Link href="/update-history" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">アップデート</a></Link>
-                        <Link href="/guide" legacyBehavior><a className="hover:text-[#64ffda] transition-colors">使い方ガイド</a></Link>
-                        </div>
-
-                    </div>
                     </div>
                 </footer>
       </div>
